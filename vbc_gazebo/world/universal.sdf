@@ -3,7 +3,7 @@
   Demo world with a widget displaying images coming from a depth camera sensor.
 -->
 <sdf version="1.6">
-  <world name="depth_camera_sensor">
+  <world name="universal">
     <physics name="1ms" type="ignored">
       <max_step_size>0.001</max_step_size>
       <real_time_factor>1.0</real_time_factor>
@@ -96,13 +96,6 @@
         <start_paused>true</start_paused>
         <use_event>true</use_event>
       </plugin>
-
-      <plugin filename="ImageDisplay" name="Image Display">
-        <gz-gui>
-          <property key="state" type="string">docked</property>
-        </gz-gui>
-        <topic>depth_camera</topic>
-      </plugin>
     </gui>
 
     <light type="directional" name="sun">
@@ -124,24 +117,18 @@
       <link name="link">
         <collision name="collision">
           <geometry>
-            <!--plane>
+            <plane>
               <normal>0 0 1</normal>
               <size>100 100</size>
-            </plane-->
-            <box>
-              <size>20 20 0.1</size>
-            </box>
+            </plane>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
-            <!--plane>
+            <plane>
               <normal>0 0 1</normal>
               <size>100 100</size>
-            </plane-->
-            <box>
-              <size>20 20 0.1</size>
-            </box>
+            </plane>
           </geometry>
           <material>
             <ambient>0.8 0.8 0.8 1</ambient>
@@ -151,6 +138,12 @@
         </visual>
       </link>
     </model>
+
+    <include>
+      <uri>
+        https://fuel.gazebosim.org/1.0/AndrejOrsula/models/panda
+      </uri>
+    </include>
 
 
   </world>
