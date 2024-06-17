@@ -9,12 +9,12 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 
-ament_environment_hooks("hooks/vbc_gazebo.dsv.in")
-ament_environment_hooks("hooks/vbc_gazebo.sh.in")
-
 install (
-  DIRECTORY models world
+  DIRECTORY models world urdf config rviz 
   DESTINATION share/${PROJECT_NAME}
 )
+
+ament_environment_hooks("hooks/vbc_gazebo.dsv.in")
+ament_environment_hooks("hooks/vbc_gazebo.sh.in")
 
 ament_package()

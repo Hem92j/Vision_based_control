@@ -3,7 +3,7 @@
   Demo world with a widget displaying images coming from a depth camera sensor.
 -->
 <sdf version="1.9">
-  <world name="universal">
+  <world name="panda_world">
     <plugin
       filename="gz-sim-physics-system"
       name="gz::sim::systems::Physics">
@@ -329,58 +329,22 @@
       </link>
     </model>
 
-    <include>
-      <uri>
-        https://fuel.gazebosim.org/1.0/AndrejOrsula/models/panda
-      </uri>
-    </include>
-
-    <model name="camera">
-      <static>true</static>
-      <pose>0 0 1.8 0 1.57 0.0</pose>
-      <link name="link">
-        <pose>0.05 0.05 0.05 0 0 0</pose>
-        <inertial>
-          <mass>0.1</mass>
-          <inertia>
-            <ixx>0.000166667</ixx>
-            <iyy>0.000166667</iyy>
-            <izz>0.000166667</izz>
-          </inertia>
-        </inertial>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>0.1 0.1 0.1</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>0.1 0.1 0.1</size>
-            </box>
-          </geometry>
-        </visual>
-        <sensor name="camera" type="camera">
-          <camera>
-            <horizontal_fov>1.047</horizontal_fov>
-            <image>
-              <width>640</width>
-              <height>320</height>
-            </image>
-            <clip>
-              <near>0.1</near>
-              <far>100</far>
-            </clip>
-          </camera>
-          <always_on>1</always_on>
-          <update_rate>30</update_rate>
-          <visualize>true</visualize>
-          <topic>camera</topic>
-        </sensor>
-      </link>
+    <model name = "panda">
+        <self_collide>true</self_collide>
+        <pose>0 0 0 0 0 0</pose>
+        <include merge= "true">
+          <uri>panda</uri>
+        </include>
     </model>
+
+    <model name = "camera">
+      <static>true</static>
+      <self_collide>true</self_collide>
+      <pose>0 0 1.8 0 1.57 0.0</pose>
+      <include merge= "true">
+        <uri>camera</uri>
+      </include>
+    </model>    
 
 
   </world>
